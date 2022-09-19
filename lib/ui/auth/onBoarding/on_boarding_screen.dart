@@ -26,7 +26,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
 
   ///list of strings containing onBoarding titles
   final List<String> _titlesList = [
-    'Flutter OnBoarding',
+    'Flutter OnBoarding', //TODO text
     'Firebase Auth',
     'Facebook Login',
     'Instaflutter.com',
@@ -36,7 +36,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
   /// list of strings containing onBoarding subtitles, the small text under the
   /// title
   final List<String> _subtitlesList = [
-    'Build your on-boarding flow in seconds.',
+    'Build your on-boarding flow in seconds.', //TODO text
     'Use Firebase for user managements.',
     'Leverage Facebook to log in user easily.',
     'Get more awesome templates',
@@ -46,10 +46,10 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
   /// list containing image paths or IconData representing the image of each page
 
   final List<dynamic> _imageList = [
-    Icons.developer_mode,
+    Icons.developer_mode, //TODO icons
     Icons.layers,
     Icons.account_circle,
-    'assets/images/ic_launcher_round.png',
+    Icons.laptop_mac_rounded,
     Icons.code
   ];
 
