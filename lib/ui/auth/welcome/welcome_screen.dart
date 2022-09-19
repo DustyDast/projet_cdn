@@ -66,7 +66,7 @@ class WelcomeScreen extends StatelessWidget {
                         const EdgeInsets.only(right: 40.0, left: 40.0, top: 40),
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        primary: const Color(COLOR_PRIMARY),
+                        backgroundColor: const Color(COLOR_PRIMARY),
                         textStyle: const TextStyle(color: Colors.white),
                         padding: const EdgeInsets.only(top: 12, bottom: 12),
                         shape: RoundedRectangleBorder(
@@ -88,13 +88,6 @@ class WelcomeScreen extends StatelessWidget {
                     padding: const EdgeInsets.only(
                         right: 40.0, left: 40.0, top: 20, bottom: 20),
                     child: TextButton(
-                      child: const Text(
-                        'Sign Up',
-                        style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                            color: Color(COLOR_PRIMARY)),
-                      ),
                       onPressed: () {
                         context.read<WelcomeBloc>().add(SignupPressed());
                       },
@@ -110,6 +103,13 @@ class WelcomeScreen extends StatelessWidget {
                             ),
                           ),
                         ),
+                      ),
+                      child: const Text(
+                        'Sign Up',
+                        style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            color: Color(COLOR_PRIMARY)),
                       ),
                     ),
                   )

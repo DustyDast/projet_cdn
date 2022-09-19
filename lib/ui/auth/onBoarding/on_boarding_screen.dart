@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:projet_cdn/constants.dart';
@@ -95,6 +94,9 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                                 .read<AuthenticationBloc>()
                                 .add(FinishedOnBoardingEvent());
                           },
+                          style: OutlinedButton.styleFrom(
+                              side: const BorderSide(color: Colors.white),
+                              shape: const StadiumBorder()),
                           child: const Text(
                             'Continue',
                             style: TextStyle(
@@ -102,9 +104,6 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold),
                           ),
-                          style: OutlinedButton.styleFrom(
-                              side: const BorderSide(color: Colors.white),
-                              shape: const StadiumBorder()),
                         ),
                       ),
                     ),

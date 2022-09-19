@@ -10,24 +10,24 @@ part 'sign_up_state.dart';
 
 class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
   SignUpBloc() : super(SignUpInitial()) {
-    ImagePicker _imagePicker = ImagePicker();
+    ImagePicker imagePicker = ImagePicker();
 
     on<RetrieveLostDataEvent>((event, emit) async {
-      final LostDataResponse? response = await _imagePicker.retrieveLostData();
+      final LostDataResponse? response = await imagePicker.retrieveLostData();
       if (response != null && response.file != null) {
         emit(PictureSelectedState(imageFile: File(response.file!.path)));
       }
     });
 
     on<ChooseImageFromGalleryEvent>((event, emit) async {
-      XFile? xImage = await _imagePicker.pickImage(source: ImageSource.gallery);
+      XFile? xImage = await imagePicker.pickImage(source: ImageSource.gallery);
       if (xImage != null) {
         emit(PictureSelectedState(imageFile: File(xImage.path)));
       }
     });
 
     on<CaptureImageByCameraEvent>((event, emit) async {
-      XFile? xImage = await _imagePicker.pickImage(source: ImageSource.camera);
+      XFile? xImage = await imagePicker.pickImage(source: ImageSource.camera);
       if (xImage != null) {
         emit(PictureSelectedState(imageFile: File(xImage.path)));
       }

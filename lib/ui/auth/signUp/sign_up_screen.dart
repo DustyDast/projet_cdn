@@ -3,7 +3,6 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:projet_cdn/constants.dart';
 import 'package:projet_cdn/services/helper.dart';
@@ -57,7 +56,9 @@ class _SignUpState extends State<SignUpScreen> {
                 listener: (context, state) {
                   if (state is ValidFields) {
                     context.read<LoadingCubit>().showLoading(
-                        context, 'Creating new account, Please wait...', true);
+                        context,
+                        'Creating new account, Please wait...',
+                        true); //TODO endless !!
                     context.read<AuthenticationBloc>().add(
                         SignupWithEmailAndPasswordEvent(
                             emailAddress: email!,
@@ -151,14 +152,14 @@ class _SignUpState extends State<SignUpScreen> {
                                   right: 110,
                                   child: FloatingActionButton(
                                     backgroundColor: const Color(COLOR_PRIMARY),
+                                    mini: true,
+                                    onPressed: () => _onCameraClick(context),
                                     child: Icon(
                                       Icons.camera_alt,
                                       color: isDarkMode(context)
                                           ? Colors.black
                                           : Colors.white,
                                     ),
-                                    mini: true,
-                                    onPressed: () => _onCameraClick(context),
                                   ),
                                 )
                               ],
@@ -262,7 +263,7 @@ class _SignUpState extends State<SignUpScreen> {
                                 right: 40.0, left: 40.0, top: 40.0),
                             child: ElevatedButton(
                               style: ElevatedButton.styleFrom(
-                                primary: const Color(COLOR_PRIMARY),
+                                backgroundColor: const Color(COLOR_PRIMARY),
                                 padding:
                                     const EdgeInsets.only(top: 12, bottom: 12),
                                 shape: RoundedRectangleBorder(
@@ -323,10 +324,10 @@ class _SignUpState extends State<SignUpScreen> {
                                     text: 'Terms of Use',
                                     recognizer: TapGestureRecognizer()
                                       ..onTap = () async {
-                                        if (await canLaunch(EULA)) {
-                                          await launch(
-                                            EULA,
-                                            forceSafariVC: false,
+                                        if (await canLaunchUrl(
+                                            Uri.parse(EULA))) {
+                                          await launchUrl(
+                                            Uri.parse(EULA),
                                           );
                                         }
                                       },
@@ -356,20 +357,20 @@ class _SignUpState extends State<SignUpScreen> {
       ),
       actions: [
         CupertinoActionSheetAction(
-          child: const Text('Choose from gallery'),
           isDefaultAction: false,
           onPressed: () async {
             Navigator.pop(context);
             context.read<SignUpBloc>().add(ChooseImageFromGalleryEvent());
           },
+          child: const Text('Choose from gallery'),
         ),
         CupertinoActionSheetAction(
-          child: const Text('Take a picture'),
           isDestructiveAction: false,
           onPressed: () async {
             Navigator.pop(context);
             context.read<SignUpBloc>().add(CaptureImageByCameraEvent());
           },
+          child: const Text('Take a picture'),
         )
       ],
       cancelButton: CupertinoActionSheetAction(

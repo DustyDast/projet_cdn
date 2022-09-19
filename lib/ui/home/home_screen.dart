@@ -1,6 +1,5 @@
 import 'dart:math';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:projet_cdn/constants.dart';
@@ -8,7 +7,6 @@ import 'package:projet_cdn/model/user.dart';
 import 'package:projet_cdn/services/helper.dart';
 import 'package:projet_cdn/ui/auth/authentication_bloc.dart';
 import 'package:projet_cdn/ui/auth/welcome/welcome_screen.dart';
-import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
   final User user;
@@ -42,12 +40,12 @@ class _HomeState extends State<HomeScreen> {
             padding: EdgeInsets.zero,
             children: [
               const DrawerHeader(
+                decoration: BoxDecoration(
+                  color: Color(COLOR_PRIMARY),
+                ),
                 child: Text(
                   'Drawer Header',
                   style: TextStyle(color: Colors.white),
-                ),
-                decoration: BoxDecoration(
-                  color: Color(COLOR_PRIMARY),
                 ),
               ),
               ListTile(

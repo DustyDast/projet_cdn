@@ -1,7 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:projet_cdn/constants.dart';
 import 'package:projet_cdn/services/helper.dart';
@@ -157,13 +154,13 @@ class _LoginScreen extends State<LoginScreen> {
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
                             padding: const EdgeInsets.only(top: 12, bottom: 12),
+                            backgroundColor: const Color(COLOR_PRIMARY),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(25.0),
                               side: const BorderSide(
                                 color: Color(COLOR_PRIMARY),
                               ),
                             ),
-                            primary: const Color(COLOR_PRIMARY),
                           ),
                           child: const Text(
                             'Log In',
@@ -210,7 +207,7 @@ class _LoginScreen extends State<LoginScreen> {
                           ),
                           style: ElevatedButton.styleFrom(
                             padding: const EdgeInsets.symmetric(vertical: 12),
-                            primary: const Color(FACEBOOK_BUTTON_COLOR),
+                            backgroundColor: const Color(FACEBOOK_BUTTON_COLOR),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(25.0),
                               side: const BorderSide(
