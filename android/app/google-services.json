@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "360560152045",
+    "project_id": "projet-integrateur-37b6f",
+    "storage_bucket": "projet-integrateur-37b6f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:360560152045:android:dc053b681a405945422be4",
+        "android_client_info": {
+          "package_name": "com.example.projet_cdn"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "360560152045-l3v21angcchroqk3hlf48p9gm8msosql.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDrBIT6wKN4RBlx9d5YZ7u9Md0aVJMgBXc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "360560152045-l3v21angcchroqk3hlf48p9gm8msosql.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "360560152045-ccg4aucfdvm67g5mdd0tl5hd1agm97c8.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.projetCdn"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

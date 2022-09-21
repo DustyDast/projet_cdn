@@ -51,6 +51,8 @@ dependencies:
   flutter_bloc: ^8.1.1
   url_launcher: ^6.1.5
   progress_dialog_null_safe: ^1.0.7
+  cloud_functions: ^3.3.7
+  firebase_messaging: ^13.0.2
 
 dev_dependencies:
   flutter_test:
