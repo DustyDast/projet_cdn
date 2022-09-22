@@ -22,6 +22,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeState extends State<HomeScreen> {
   late User user;
   late DialogFlowtter dialogFlowtter;
+  late DialogAuthCredentials credentials;
   final TextEditingController _controller = TextEditingController();
 
   List<Map<String, dynamic>> messages = [];
@@ -30,7 +31,8 @@ class _HomeState extends State<HomeScreen> {
   void initState() {
     super.initState();
     user = widget.user;
-    DialogFlowtter.fromFile().then((instance) => dialogFlowtter = instance);
+    DialogFlowtter.fromFile(path: "assets/dialog_flow_auth.json")
+        .then((instance) => dialogFlowtter = instance);
   }
 
   @override
@@ -122,7 +124,7 @@ class _HomeState extends State<HomeScreen> {
       );
     });
 
-    //dialogFlowtter.projectId =  "projet-integrateur-37b6f"
+    //dialogFlowtter.projectId = "projet-integrateur-37b6f";
 
     DetectIntentResponse response = await dialogFlowtter.detectIntent(
       queryInput: QueryInput(text: TextInput(text: text)),
