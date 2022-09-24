@@ -31,7 +31,8 @@ class _HomeState extends State<HomeScreen> {
   void initState() {
     super.initState();
     user = widget.user;
-    DialogFlowtter.fromFile(path: "assets/dialog_flow_auth.json")
+    DialogFlowtter.fromFile(
+            path: "assets/dialog_flow_auth.json", sessionId: user.userID)
         .then((instance) => dialogFlowtter = instance);
   }
 
@@ -127,7 +128,7 @@ class _HomeState extends State<HomeScreen> {
     //dialogFlowtter.projectId = "projet-integrateur-37b6f";
 
     DetectIntentResponse response = await dialogFlowtter.detectIntent(
-      queryInput: QueryInput(text: TextInput(text: text)),
+      queryInput: QueryInput(text: TextInput(text: text, languageCode: 'fr')),
     );
 
     if (response.message == null) return;
