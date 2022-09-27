@@ -31,8 +31,7 @@ class _HomeState extends State<HomeScreen> {
   void initState() {
     super.initState();
     user = widget.user;
-    DialogFlowtter.fromFile(
-            path: "assets/dialog_flow_auth.json", sessionId: user.userID)
+    DialogFlowtter.fromFile(path: "assets/dialog_flow_auth.json")
         .then((instance) => dialogFlowtter = instance);
   }
 
@@ -84,7 +83,7 @@ class _HomeState extends State<HomeScreen> {
         ),
         body: Column(
           children: [
-            Expanded(child: AppBody(messages: messages)),
+            Expanded(child: AppBody(messages: messages, sendMessage: sendMessage,)),
             Container(
               padding: const EdgeInsets.symmetric(
                 horizontal: 10,
@@ -128,7 +127,7 @@ class _HomeState extends State<HomeScreen> {
     //dialogFlowtter.projectId = "projet-integrateur-37b6f";
 
     DetectIntentResponse response = await dialogFlowtter.detectIntent(
-      queryInput: QueryInput(text: TextInput(text: text, languageCode: 'fr')),
+      queryInput: QueryInput(text: TextInput(text: text)),
     );
 
     if (response.message == null) return;
@@ -150,44 +149,4 @@ class _HomeState extends State<HomeScreen> {
     super.dispose();
   }
 }
-
-    //     body: Center(
-    //       child: Column(
-    //         mainAxisAlignment: MainAxisAlignment.center,
-    //         mainAxisSize: MainAxisSize.max,
-    //         crossAxisAlignment: CrossAxisAlignment.center,
-    //         children: [
-    //           user.profilePictureURL == ''
-    //               ? CircleAvatar(
-    //                   radius: 35,
-    //                   backgroundColor: Colors.grey.shade400,
-    //                   child: ClipOval(
-    //                     child: SizedBox(
-    //                       width: 70,
-    //                       height: 70,
-    //                       child: Image.asset(
-    //                         'assets/images/placeholder.jpg',
-    //                         fit: BoxFit.cover,
-    //                       ),
-    //                     ),
-    //                   ),
-    //                 )
-    //               : displayCircleImage(user.profilePictureURL, 80, false),
-    //           Padding(
-    //             padding: const EdgeInsets.all(8.0),
-    //             child: Text(user.fullName()),
-    //           ),
-    //           Padding(
-    //             padding: const EdgeInsets.all(8.0),
-    //             child: Text(user.email),
-    //           ),
-    //           Padding(
-    //             padding: const EdgeInsets.all(8.0),
-    //             child: Text(user.userID),
-    //           ),
-    //         ],
-    //       ),
-    //     ),
-    //   ),
-    // );
 
