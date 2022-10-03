@@ -54,9 +54,8 @@ class _LoginScreen extends State<LoginScreen> {
               BlocListener<LoginBloc, LoginState>(
                 listener: (context, state) {
                   if (state is ValidLoginFields) {
-                    context
-                        .read<LoadingCubit>()
-                        .showLoading(context, 'Veuillez patienter...', false);
+                    context.read<LoadingCubit>().showLoading(context,
+                        'En train de connecter. Veuillez patienter...', false);
                     context.read<AuthenticationBloc>().add(
                           LoginWithEmailAndPasswordEvent(
                             email: email!,
@@ -83,7 +82,7 @@ class _LoginScreen extends State<LoginScreen> {
                         padding:
                             EdgeInsets.only(top: 32.0, right: 16.0, left: 16.0),
                         child: Text(
-                          'Sign In',
+                          'S\'identifier',
                           style: TextStyle(
                               color: Color(COLOR_PRIMARY),
                               fontSize: 25.0,
@@ -182,7 +181,7 @@ class _LoginScreen extends State<LoginScreen> {
                         padding: const EdgeInsets.all(32.0),
                         child: Center(
                           child: Text(
-                            'OR',
+                            'OU',
                             style: TextStyle(
                                 color: isDarkMode(context)
                                     ? Colors.white
@@ -195,7 +194,7 @@ class _LoginScreen extends State<LoginScreen> {
                             right: 40.0, left: 40.0, bottom: 20),
                         child: ElevatedButton.icon(
                           label: const Text(
-                            'Identifiant Facebook',
+                            'Facebook',
                             textAlign: TextAlign.center,
                             style: TextStyle(
                                 fontSize: 20,

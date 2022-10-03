@@ -12,7 +12,8 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         event.key.currentState!.save();
         emit(ValidLoginFields());
       } else {
-        emit(LoginFailureState(errorMessage: 'Please fill required fields.'));
+        emit(LoginFailureState(
+            errorMessage: 'Veuillez remplir les champs obligatoires.'));
       }
     });
   }

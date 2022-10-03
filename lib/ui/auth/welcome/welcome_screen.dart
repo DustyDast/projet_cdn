@@ -35,9 +35,9 @@ class WelcomeScreen extends StatelessWidget {
                 children: <Widget>[
                   Center(
                     child: Image.asset(
-                      'assets/images/welcome_image.png',
-                      width: 150.0,
-                      height: 150.0,
+                      'assets/images/lambo.jpg',
+                      width: 380.0,
+                      height: 220.0,
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -45,7 +45,7 @@ class WelcomeScreen extends StatelessWidget {
                     padding: EdgeInsets.only(
                         left: 16, top: 32, right: 16, bottom: 8),
                     child: Text(
-                      'Say Hello To Your New App!',
+                      'Auto Bot!',
                       textAlign: TextAlign.center,
                       style: TextStyle(
                           color: Color(COLOR_PRIMARY),
@@ -56,7 +56,7 @@ class WelcomeScreen extends StatelessWidget {
                   const Padding(
                     padding: EdgeInsets.symmetric(horizontal: 40, vertical: 16),
                     child: Text(
-                      'You\'ve just saved a week of development and headaches.',
+                      'Tout ce dont vous avez besoin sur les voitures.\nVous pouvez acheter, vendre ou vous informer avec votre nouvelle application:\nAuto Bot !.',
                       style: TextStyle(fontSize: 18),
                       textAlign: TextAlign.center,
                     ),
@@ -75,7 +75,7 @@ class WelcomeScreen extends StatelessWidget {
                                 const BorderSide(color: Color(COLOR_PRIMARY))),
                       ),
                       child: const Text(
-                        'Log In',
+                        'Se connecter',
                         style: TextStyle(
                             fontSize: 20, fontWeight: FontWeight.bold),
                       ),
@@ -105,7 +105,7 @@ class WelcomeScreen extends StatelessWidget {
                         ),
                       ),
                       child: const Text(
-                        'Sign Up',
+                        'S\'inscrire',
                         style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
