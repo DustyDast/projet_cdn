@@ -142,11 +142,11 @@ class _HomeState extends State<HomeScreen> {
     });
   }
 
-  void addMessage(Message message, [bool isUserMessage = false]) {
-    print(message.text); //TODO
-    if (message.text == '**UPLOAD USER IMAGES**') {
+  void addMessage(Message message, [bool isUserMessage = false]) async {
+    if (message.text.toString() == 'DialogText([**UPLOAD USER IMAGE**])') {
+      message.text!.text![0] = await uploadImage();
       messages.add({
-        'message': uploadImage(),
+        'message': message,
         'isUserMessage': true,
       });
     } else {
@@ -163,8 +163,7 @@ class _HomeState extends State<HomeScreen> {
     XFile? xImage = await imagePicker.pickImage(source: ImageSource.gallery);
     if (xImage != null) {
       File image = File(xImage.path);
-      updateProgress('Uploading image, Please wait...');
-      Reference upload = storage.child("images/cars/$user.userID.jpeg");
+      Reference upload = storage.child("images/cars/${user.userID}.jpeg");
       UploadTask uploadTask = upload.putFile(image);
       var downloadUrl =
           await (await uploadTask.whenComplete(() {})).ref.getDownloadURL();
