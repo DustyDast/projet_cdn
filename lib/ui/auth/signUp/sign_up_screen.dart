@@ -56,9 +56,7 @@ class _SignUpState extends State<SignUpScreen> {
                 listener: (context, state) {
                   if (state is ValidFields) {
                     context.read<LoadingCubit>().showLoading(
-                        context,
-                        'Creating new account, Please wait...',
-                        true); //TODO endless !!
+                        context, 'Creating new account, Please wait...', true);
                     context.read<AuthenticationBloc>().add(
                         SignupWithEmailAndPasswordEvent(
                             emailAddress: email!,

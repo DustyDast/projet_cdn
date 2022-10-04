@@ -1,12 +1,17 @@
+import 'dart:io';
 import 'dart:math';
 
 import 'package:dialog_flowtter/dialog_flowtter.dart';
+import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:projet_cdn/constants.dart';
 import 'package:projet_cdn/model/user.dart';
 import 'package:projet_cdn/services/helper.dart';
 import 'package:projet_cdn/ui/auth/authentication_bloc.dart';
+import 'package:projet_cdn/ui/auth/signUp/sign_up_bloc.dart';
 import 'package:projet_cdn/ui/auth/welcome/welcome_screen.dart';
 import 'package:projet_cdn/ui/home/app_body.dart';
 
@@ -138,10 +143,36 @@ class _HomeState extends State<HomeScreen> {
   }
 
   void addMessage(Message message, [bool isUserMessage = false]) {
-    messages.add({
-      'message': message,
-      'isUserMessage': isUserMessage,
-    });
+    print(message.text); //TODO
+    if (message.text == '**UPLOAD USER IMAGES**') {
+      messages.add({
+        'message': uploadImage(),
+        'isUserMessage': true,
+      });
+    } else {
+      messages.add({
+        'message': message,
+        'isUserMessage': isUserMessage,
+      });
+    }
+  }
+
+  Future<String> uploadImage() async {
+    Reference storage = FirebaseStorage.instance.ref();
+    ImagePicker imagePicker = ImagePicker();
+    XFile? xImage = await imagePicker.pickImage(source: ImageSource.gallery);
+    if (xImage != null) {
+      File image = File(xImage.path);
+      updateProgress('Uploading image, Please wait...');
+      Reference upload = storage.child("images/cars/$user.userID.jpeg");
+      UploadTask uploadTask = upload.putFile(image);
+      var downloadUrl =
+          await (await uploadTask.whenComplete(() {})).ref.getDownloadURL();
+      return downloadUrl.toString();
+    }
+    String defaultUrl =
+        'https://firebasestorage.googleapis.com/v0/b/projetintegrateurv2.appspot.com/o/images%2Fpexels-mike-b-112460.jpg?alt=media&token=55503f6c-f77b-4591-9ca2-33c4cd58be8a';
+    return defaultUrl;
   }
 
   @override
@@ -151,43 +182,42 @@ class _HomeState extends State<HomeScreen> {
   }
 }
 
-    //     body: Center(
-    //       child: Column(
-    //         mainAxisAlignment: MainAxisAlignment.center,
-    //         mainAxisSize: MainAxisSize.max,
-    //         crossAxisAlignment: CrossAxisAlignment.center,
-    //         children: [
-    //           user.profilePictureURL == ''
-    //               ? CircleAvatar(
-    //                   radius: 35,
-    //                   backgroundColor: Colors.grey.shade400,
-    //                   child: ClipOval(
-    //                     child: SizedBox(
-    //                       width: 70,
-    //                       height: 70,
-    //                       child: Image.asset(
-    //                         'assets/images/placeholder.jpg',
-    //                         fit: BoxFit.cover,
-    //                       ),
-    //                     ),
-    //                   ),
-    //                 )
-    //               : displayCircleImage(user.profilePictureURL, 80, false),
-    //           Padding(
-    //             padding: const EdgeInsets.all(8.0),
-    //             child: Text(user.fullName()),
-    //           ),
-    //           Padding(
-    //             padding: const EdgeInsets.all(8.0),
-    //             child: Text(user.email),
-    //           ),
-    //           Padding(
-    //             padding: const EdgeInsets.all(8.0),
-    //             child: Text(user.userID),
-    //           ),
-    //         ],
-    //       ),
-    //     ),
-    //   ),
-    // );
-
+//     body: Center(
+//       child: Column(
+//         mainAxisAlignment: MainAxisAlignment.center,
+//         mainAxisSize: MainAxisSize.max,
+//         crossAxisAlignment: CrossAxisAlignment.center,
+//         children: [
+//           user.profilePictureURL == ''
+//               ? CircleAvatar(
+//                   radius: 35,
+//                   backgroundColor: Colors.grey.shade400,
+//                   child: ClipOval(
+//                     child: SizedBox(
+//                       width: 70,
+//                       height: 70,
+//                       child: Image.asset(
+//                         'assets/images/placeholder.jpg',
+//                         fit: BoxFit.cover,
+//                       ),
+//                     ),
+//                   ),
+//                 )
+//               : displayCircleImage(user.profilePictureURL, 80, false),
+//           Padding(
+//             padding: const EdgeInsets.all(8.0),
+//             child: Text(user.fullName()),
+//           ),
+//           Padding(
+//             padding: const EdgeInsets.all(8.0),
+//             child: Text(user.email),
+//           ),
+//           Padding(
+//             padding: const EdgeInsets.all(8.0),
+//             child: Text(user.userID),
+//           ),
+//         ],
+//       ),
+//     ),
+//   ),
+// );
