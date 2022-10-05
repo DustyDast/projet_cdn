@@ -149,17 +149,13 @@ class _HomeState extends State<HomeScreen> {
 
   void addMessage(Message message, [bool isUserMessage = false]) async {
     if (message.text.toString() == 'DialogText([**UPLOAD USER IMAGE**])') {
-      message.text!.text![0] = await uploadImage();
-      messages.add({
-        'message': message,
-        'isUserMessage': isUserMessage,
-      });
-    } else {
-      messages.add({
-        'message': message,
-        'isUserMessage': isUserMessage,
-      });
+      message.text!.text![0] = 'Envoi de l\'image';
+      sendMessage(await uploadImage());
     }
+    messages.add({
+      'message': message,
+      'isUserMessage': isUserMessage,
+    });
   }
 
   Future<String> uploadImage() async {
