@@ -150,7 +150,7 @@ class _LoginScreen extends State<LoginScreen> {
                         ),
                       ),
 
-                      /*   Padding(
+                      Padding(
                         padding: const EdgeInsets.only(
                             right: 40.0, left: 40.0, top: 40),
                         child: ElevatedButton(
@@ -177,7 +177,7 @@ class _LoginScreen extends State<LoginScreen> {
                               .add(ValidateLoginFieldsEvent(_key)),
                         ),
                       ),
-                      Padding(
+                      /*  Padding(
                         padding: const EdgeInsets.all(32.0),
                         child: Center(
                           child: Text(
