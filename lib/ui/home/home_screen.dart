@@ -31,7 +31,7 @@ class _HomeState extends State<HomeScreen> {
   void initState() {
     super.initState();
     user = widget.user;
-    DialogFlowtter.fromFile(path: "assets/dialog_flow_auth.json")
+    DialogFlowtter.fromFile(path: "assets/dialog_flow_auth.json", sessionId: user.userID)
         .then((instance) => dialogFlowtter = instance);
   }
 
