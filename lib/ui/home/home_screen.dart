@@ -36,8 +36,7 @@ class _HomeState extends State<HomeScreen> {
   void initState() {
     super.initState();
     user = widget.user;
-    DialogFlowtter.fromFile(
-            path: "assets/dialog_flow_auth.json", sessionId: user.userID)
+    DialogFlowtter.fromFile(path: "assets/dialog_flow_auth.json", sessionId: user.userID)
         .then((instance) => dialogFlowtter = instance);
   }
 
@@ -66,7 +65,7 @@ class _HomeState extends State<HomeScreen> {
               ),
               ListTile(
                 title: const Text(
-                  'Logout',
+                  'Sortir',
                   style: TextStyle(color: Colors.black),
                 ),
                 leading: Transform.rotate(
@@ -81,7 +80,7 @@ class _HomeState extends State<HomeScreen> {
         ),
         appBar: AppBar(
           title: const Text(
-            'Home',
+            'Auto Bot',
             style: TextStyle(color: Colors.black),
           ),
           iconTheme: const IconThemeData(color: Colors.black),
@@ -90,7 +89,7 @@ class _HomeState extends State<HomeScreen> {
         ),
         body: Column(
           children: [
-            Expanded(child: AppBody(messages: messages)),
+            Expanded(child: AppBody(messages: messages, sendMessage: sendMessage,)),
             Container(
               padding: const EdgeInsets.symmetric(
                 horizontal: 10,
@@ -134,7 +133,7 @@ class _HomeState extends State<HomeScreen> {
     //dialogFlowtter.projectId = "projet-integrateur-37b6f";
 
     DetectIntentResponse response = await dialogFlowtter.detectIntent(
-      queryInput: QueryInput(text: TextInput(text: text, languageCode: 'fr')),
+      queryInput: QueryInput(text: TextInput(text: text)),
     );
 
     if (response.message == null) return;
