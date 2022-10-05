@@ -7,6 +7,7 @@ import 'package:projet_cdn/ui/auth/onBoarding/on_boarding_cubit.dart';
 import 'package:projet_cdn/ui/auth/welcome/welcome_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import '../../../colors.dart';
 
 class OnBoardingScreen extends StatefulWidget {
   const OnBoardingScreen({Key? key}) : super(key: key);
@@ -58,7 +59,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
     return BlocProvider(
       create: (context) => OnBoardingCubit(),
       child: Scaffold(
-        backgroundColor: const Color(COLOR_PRIMARY),
+        backgroundColor: bot,
         body: BlocBuilder<OnBoardingCubit, OnBoardingInitial>(
           builder: (context, state) {
             return Stack(

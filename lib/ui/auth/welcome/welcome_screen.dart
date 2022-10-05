@@ -5,6 +5,7 @@ import 'package:projet_cdn/services/helper.dart';
 import 'package:projet_cdn/ui/auth/login/login_screen.dart';
 import 'package:projet_cdn/ui/auth/signUp/sign_up_screen.dart';
 import 'package:projet_cdn/ui/auth/welcome/welcome_bloc.dart';
+import '../../../colors.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({Key? key}) : super(key: key);
@@ -48,7 +49,7 @@ class WelcomeScreen extends StatelessWidget {
                       'Say Hello To Your New App!',
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                          color: Color(COLOR_PRIMARY),
+                          color: botAccent,
                           fontSize: 24.0,
                           fontWeight: FontWeight.bold),
                     ),
@@ -66,13 +67,13 @@ class WelcomeScreen extends StatelessWidget {
                         const EdgeInsets.only(right: 40.0, left: 40.0, top: 40),
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color(COLOR_PRIMARY),
+                        backgroundColor: bot,
                         textStyle: const TextStyle(color: Colors.white),
                         padding: const EdgeInsets.only(top: 12, bottom: 12),
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(25.0),
                             side:
-                                const BorderSide(color: Color(COLOR_PRIMARY))),
+                                const BorderSide(color: bot)),
                       ),
                       child: const Text(
                         'Log In',
@@ -99,7 +100,7 @@ class WelcomeScreen extends StatelessWidget {
                           RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(25.0),
                             side: const BorderSide(
-                              color: Color(COLOR_PRIMARY),
+                              color: bot,
                             ),
                           ),
                         ),
@@ -109,7 +110,7 @@ class WelcomeScreen extends StatelessWidget {
                         style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
-                            color: Color(COLOR_PRIMARY)),
+                            color: bot),
                       ),
                     ),
                   )
