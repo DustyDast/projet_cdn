@@ -36,7 +36,8 @@ class _HomeState extends State<HomeScreen> {
   void initState() {
     super.initState();
     user = widget.user;
-    DialogFlowtter.fromFile(path: "assets/dialog_flow_auth.json", sessionId: user.userID)
+    DialogFlowtter.fromFile(
+            path: "assets/dialog_flow_auth.json", sessionId: user.userID)
         .then((instance) => dialogFlowtter = instance);
   }
 
@@ -89,7 +90,11 @@ class _HomeState extends State<HomeScreen> {
         ),
         body: Column(
           children: [
-            Expanded(child: AppBody(messages: messages, sendMessage: sendMessage,)),
+            Expanded(
+                child: AppBody(
+              messages: messages,
+              sendMessage: sendMessage,
+            )),
             Container(
               padding: const EdgeInsets.symmetric(
                 horizontal: 10,
@@ -147,7 +152,7 @@ class _HomeState extends State<HomeScreen> {
       message.text!.text![0] = await uploadImage();
       messages.add({
         'message': message,
-        'isUserMessage': true,
+        'isUserMessage': isUserMessage,
       });
     } else {
       messages.add({
