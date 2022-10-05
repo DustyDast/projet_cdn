@@ -1,12 +1,16 @@
 import 'package:dialog_flowtter/dialog_flowtter.dart';
 import 'package:flutter/material.dart';
 
+
+
 class AppBody extends StatelessWidget {
   final List<Map<String, dynamic>> messages;
-
+  final Function  sendMessage;
+ 
   const AppBody({
     Key? key,
     this.messages = const [],
+    required this.sendMessage
   }) : super(key: key);
 
   @override
@@ -24,6 +28,7 @@ class AppBody extends StatelessWidget {
             _MessageContainer(
               message: message,
               isUserMessage: isUserMessage,
+              sendMessage: sendMessage,
             ),
           ],
         );
@@ -42,11 +47,13 @@ class AppBody extends StatelessWidget {
 class _MessageContainer extends StatelessWidget {
   final Message message;
   final bool isUserMessage;
+  final Function sendMessage;
 
   const _MessageContainer({
     Key? key,
     required this.message,
     this.isUserMessage = false,
+    required this.sendMessage
   }) : super(key: key);
 
   @override
@@ -56,13 +63,15 @@ class _MessageContainer extends StatelessWidget {
       child: LayoutBuilder(
         builder: (context, constrains) {
           switch (message.type) {
+            case MessageType.quickReply:
+              return _QuickRepliesContainer(qReplies: message.quickReplies!,sendMessage: sendMessage,);
             case MessageType.card:
               return _CardContainer(card: message.card!);
             case MessageType.text:
             default:
               return Container(
                 decoration: BoxDecoration(
-                  color: isUserMessage ? Colors.blue : Colors.orange,
+                  color: isUserMessage ? Colors.blue : Colors.purple,
                   borderRadius: BorderRadius.circular(20),
                 ),
                 padding: const EdgeInsets.all(10),
@@ -80,6 +89,78 @@ class _MessageContainer extends StatelessWidget {
   }
 }
 
+class _QuickRepliesContainer extends StatelessWidget {
+  final QuickReplies qReplies;
+  final Function sendMessage;
+
+  const _QuickRepliesContainer({
+    Key? key,
+    required this.qReplies,
+    required this.sendMessage
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+        color: Colors.purple,
+        child: Column(
+          mainAxisSize: MainAxisSize.max,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(
+                    qReplies.title ?? '',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),                  	
+                  Divider(
+                    height: 15,
+                  ),
+                  if (qReplies.quickReplies?.isNotEmpty ?? false)
+                    Container(
+                      constraints: BoxConstraints(
+                        maxHeight: 40,
+                      ),
+                      child: ListView.separated(
+                        shrinkWrap: true,
+                        scrollDirection: Axis.horizontal,
+                        // padding: const EdgeInsets.symmetric(vertical: 5),
+                        itemBuilder: (context, i) {
+                          //CardButton button = quickReplies.quickReplies![i];
+                          return TextButton(
+                            style: TextButton.styleFrom(
+                              primary: Colors.white,
+                              backgroundColor: Colors.blue,                              
+                            ),
+                            child: Text(qReplies.quickReplies![i]),
+                            onPressed: () {
+                              sendMessage(qReplies.quickReplies![i]);
+                              
+                              
+                            },
+                          );
+                        },
+                        separatorBuilder: (_, i) => Container(width: 10),
+                        itemCount: qReplies.quickReplies!.length,
+                      ),
+                    ),
+                ],
+              ),
+            ),
+          ],
+        ),
+
+    );
+  }
+}
+
 class _CardContainer extends StatelessWidget {
   final DialogCard card;
 
@@ -92,7 +173,7 @@ class _CardContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: Card(
-        color: Colors.orange,
+        color: Colors.purple,
         child: Column(
           mainAxisSize: MainAxisSize.max,
           crossAxisAlignment: CrossAxisAlignment.start,
