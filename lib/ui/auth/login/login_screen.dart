@@ -45,16 +45,18 @@ class _LoginScreen extends State<LoginScreen> {
                     pushAndRemoveUntil(
                         context, HomeScreen(user: state.user!), false);
                   } else {
-                    showSnackBar(context,
-                        state.message ?? 'Couldn\'t login, Please try again.');
+                    showSnackBar(
+                        context,
+                        state.message ??
+                            'Impossible de se connecter, veuillez réessayer.');
                   }
                 },
               ),
               BlocListener<LoginBloc, LoginState>(
                 listener: (context, state) {
                   if (state is ValidLoginFields) {
-                    context.read<LoadingCubit>().showLoading(
-                        context, 'Logging in, Please wait...', false);
+                    context.read<LoadingCubit>().showLoading(context,
+                        'En train de connecter. Veuillez patienter...', false);
                     context.read<AuthenticationBloc>().add(
                           LoginWithEmailAndPasswordEvent(
                             email: email!,
@@ -81,7 +83,7 @@ class _LoginScreen extends State<LoginScreen> {
                         padding:
                             EdgeInsets.only(top: 32.0, right: 16.0, left: 16.0),
                         child: Text(
-                          'Sign In',
+                          'S\'identifier',
                           style: TextStyle(
                               color: bot,
                               fontSize: 25.0,
@@ -102,7 +104,7 @@ class _LoginScreen extends State<LoginScreen> {
                             keyboardType: TextInputType.emailAddress,
                             cursorColor: bot,
                             decoration: getInputDecoration(
-                                hint: 'Email Address',
+                                hint: 'Adresse e-mail',
                                 darkMode: isDarkMode(context),
                                 errorColor: Theme.of(context).errorColor)),
                       ),
@@ -123,7 +125,7 @@ class _LoginScreen extends State<LoginScreen> {
                             style: const TextStyle(fontSize: 18.0),
                             cursorColor: bot,
                             decoration: getInputDecoration(
-                                hint: 'Password',
+                                hint: 'Mot de passe',
                                 darkMode: isDarkMode(context),
                                 errorColor: Theme.of(context).errorColor)),
                       ),
@@ -138,7 +140,7 @@ class _LoginScreen extends State<LoginScreen> {
                             onTap: () =>
                                 push(context, const ResetPasswordScreen()),
                             child: const Text(
-                              'Forgot password?',
+                              'mot de passe oublié?',
                               style: TextStyle(
                                   color: botAccent,
                                   fontWeight: FontWeight.bold,
@@ -164,7 +166,7 @@ class _LoginScreen extends State<LoginScreen> {
                             ),
                           ),
                           child: const Text(
-                            'Log In',
+                            'Connexion',
                             style: TextStyle(
                               fontSize: 20,
                               fontWeight: FontWeight.bold,
@@ -180,7 +182,7 @@ class _LoginScreen extends State<LoginScreen> {
                         padding: const EdgeInsets.all(32.0),
                         child: Center(
                           child: Text(
-                            'OR',
+                            'OU',
                             style: TextStyle(
                                 color: isDarkMode(context)
                                     ? Colors.white
@@ -193,7 +195,7 @@ class _LoginScreen extends State<LoginScreen> {
                             right: 40.0, left: 40.0, bottom: 20),
                         child: ElevatedButton.icon(
                           label: const Text(
-                            'Facebook Login',
+                            'Facebook',
                             textAlign: TextAlign.center,
                             style: TextStyle(
                                 fontSize: 20,
@@ -217,8 +219,8 @@ class _LoginScreen extends State<LoginScreen> {
                             ),
                           ),
                           onPressed: () {
-                            context.read<LoadingCubit>().showLoading(
-                                context, 'Logging in, Please wait...', false);
+                            context.read<LoadingCubit>().showLoading(context,
+                                'Connexion, veuillez patienter...', false);
                             context.read<AuthenticationBloc>().add(
                                   LoginWithFacebookEvent(),
                                 );
@@ -247,7 +249,7 @@ class _LoginScreen extends State<LoginScreen> {
                                   onPressed: () {
                                     context.read<LoadingCubit>().showLoading(
                                         context,
-                                        'Logging in, Please wait...',
+                                        'Connexion, veuillez patienter...',
                                         false);
                                     context.read<AuthenticationBloc>().add(
                                           LoginWithAppleEvent(),

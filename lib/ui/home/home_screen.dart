@@ -35,6 +35,7 @@ class _HomeState extends State<HomeScreen> {
         .then((instance) => dialogFlowtter = instance);
   }
 
+//test
   @override
   Widget build(BuildContext context) {
     return BlocListener<AuthenticationBloc, AuthenticationState>(
@@ -59,7 +60,7 @@ class _HomeState extends State<HomeScreen> {
               ),
               ListTile(
                 title: const Text(
-                  'Logout',
+                  'Sortir',
                   style: TextStyle(color: Colors.black),
                 ),
                 leading: Transform.rotate(
@@ -74,7 +75,7 @@ class _HomeState extends State<HomeScreen> {
         ),
         appBar: AppBar(
           title: const Text(
-            'Home',
+            'Auto Bot',
             style: TextStyle(color: Colors.black),
           ),
           iconTheme: const IconThemeData(color: Colors.black),

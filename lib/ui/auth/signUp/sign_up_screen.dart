@@ -48,7 +48,7 @@ class _SignUpState extends State<SignUpScreen> {
                     showSnackBar(
                         context,
                         state.message ??
-                            'Couldn\'t sign up, Please try again.');
+                            'Impossible de s\'inscrire, veuillez réessayer.');
                   }
                 },
               ),
@@ -57,7 +57,7 @@ class _SignUpState extends State<SignUpScreen> {
                   if (state is ValidFields) {
                     context.read<LoadingCubit>().showLoading(
                         context,
-                        'Creating new account, Please wait...',
+                        'Création d\'un nouveau compte, veuillez patienter...',
                         true); //TODO endless !!
                     context.read<AuthenticationBloc>().add(
                         SignupWithEmailAndPasswordEvent(
@@ -96,7 +96,7 @@ class _SignUpState extends State<SignUpScreen> {
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
                           const Text(
-                            'Create new account',
+                            'Créer un nouveau compte',
                             style: TextStyle(
                                 color: Color(COLOR_PRIMARY),
                                 fontWeight: FontWeight.bold,
@@ -176,7 +176,7 @@ class _SignUpState extends State<SignUpScreen> {
                               },
                               textInputAction: TextInputAction.next,
                               decoration: getInputDecoration(
-                                  hint: 'First Name',
+                                  hint: 'Prénom',
                                   darkMode: isDarkMode(context),
                                   errorColor: Theme.of(context).errorColor),
                             ),
@@ -192,7 +192,7 @@ class _SignUpState extends State<SignUpScreen> {
                               },
                               textInputAction: TextInputAction.next,
                               decoration: getInputDecoration(
-                                  hint: 'Last Name',
+                                  hint: 'Nom',
                                   darkMode: isDarkMode(context),
                                   errorColor: Theme.of(context).errorColor),
                             ),
@@ -208,7 +208,7 @@ class _SignUpState extends State<SignUpScreen> {
                                 email = val;
                               },
                               decoration: getInputDecoration(
-                                  hint: 'Email',
+                                  hint: 'E-mail',
                                   darkMode: isDarkMode(context),
                                   errorColor: Theme.of(context).errorColor),
                             ),
@@ -228,7 +228,7 @@ class _SignUpState extends State<SignUpScreen> {
                                   const TextStyle(height: 0.8, fontSize: 18.0),
                               cursorColor: const Color(COLOR_PRIMARY),
                               decoration: getInputDecoration(
-                                  hint: 'Password',
+                                  hint: 'Mot de passe',
                                   darkMode: isDarkMode(context),
                                   errorColor: Theme.of(context).errorColor),
                             ),
@@ -253,7 +253,7 @@ class _SignUpState extends State<SignUpScreen> {
                                   const TextStyle(height: 0.8, fontSize: 18.0),
                               cursorColor: const Color(COLOR_PRIMARY),
                               decoration: getInputDecoration(
-                                  hint: 'Confirm Password',
+                                  hint: 'Confirmez le mot de passe',
                                   darkMode: isDarkMode(context),
                                   errorColor: Theme.of(context).errorColor),
                             ),
@@ -274,7 +274,7 @@ class _SignUpState extends State<SignUpScreen> {
                                 ),
                               ),
                               child: const Text(
-                                'Sign Up',
+                                'S\'inscrire',
                                 style: TextStyle(
                                   fontSize: 20,
                                   fontWeight: FontWeight.bold,
@@ -314,14 +314,14 @@ class _SignUpState extends State<SignUpScreen> {
                                 children: [
                                   const TextSpan(
                                     text:
-                                        'By creating an account you agree to our\n',
+                                        'En créant un compte, vous acceptez nos\n',
                                     style: TextStyle(color: Colors.grey),
                                   ),
                                   TextSpan(
                                     style: const TextStyle(
                                       color: Colors.blueAccent,
                                     ),
-                                    text: 'Terms of Use',
+                                    text: 'Conditions d\'utilisation',
                                     recognizer: TapGestureRecognizer()
                                       ..onTap = () async {
                                         if (await canLaunchUrl(
@@ -352,7 +352,7 @@ class _SignUpState extends State<SignUpScreen> {
   _onCameraClick(BuildContext context) {
     final action = CupertinoActionSheet(
       title: const Text(
-        'Add Profile Picture',
+        'Ajouter une photo de profil',
         style: TextStyle(fontSize: 15.0),
       ),
       actions: [
@@ -362,7 +362,7 @@ class _SignUpState extends State<SignUpScreen> {
             Navigator.pop(context);
             context.read<SignUpBloc>().add(ChooseImageFromGalleryEvent());
           },
-          child: const Text('Choose from gallery'),
+          child: const Text('Choisir depuis la galerie'),
         ),
         CupertinoActionSheetAction(
           isDestructiveAction: false,
@@ -370,11 +370,12 @@ class _SignUpState extends State<SignUpScreen> {
             Navigator.pop(context);
             context.read<SignUpBloc>().add(CaptureImageByCameraEvent());
           },
-          child: const Text('Take a picture'),
+          child: const Text('Prendre une photo'),
         )
       ],
       cancelButton: CupertinoActionSheetAction(
-          child: const Text('Cancel'), onPressed: () => Navigator.pop(context)),
+          child: const Text('Annuler'),
+          onPressed: () => Navigator.pop(context)),
     );
     showCupertinoModalPopup(context: context, builder: (context) => action);
   }
