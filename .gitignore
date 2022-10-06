@@ -1,5 +1,6 @@
 /assets/dialog_flow_auth.json
 /lib/firebase_options.dart
+random-info.js
 # Miscellaneous
 *.class
 *.log

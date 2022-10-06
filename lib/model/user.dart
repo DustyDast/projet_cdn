@@ -25,11 +25,11 @@ class User {
 
   factory User.fromJson(Map<String, dynamic> parsedJson) {
     return User(
-        email: parsedJson['courriel'] ?? '',
-        firstName: parsedJson['Prénom'] ?? '',
-        lastName: parsedJson['Nom'] ?? '',
+        email: parsedJson['email'] ?? '',
+        firstName: parsedJson['firstName'] ?? '',
+        lastName: parsedJson['lastName'] ?? '',
         userID: parsedJson['id'] ?? parsedJson['userID'] ?? '',
-        profilePictureURL: parsedJson['photoURL'] ?? '');
+        profilePictureURL: parsedJson['profilePictureURL'] ?? '');
   }
 
   Map<String, dynamic> toJson() {

@@ -1,12 +1,17 @@
+import 'dart:io';
 import 'dart:math';
 
 import 'package:dialog_flowtter/dialog_flowtter.dart';
+import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:projet_cdn/constants.dart';
 import 'package:projet_cdn/model/user.dart';
 import 'package:projet_cdn/services/helper.dart';
 import 'package:projet_cdn/ui/auth/authentication_bloc.dart';
+import 'package:projet_cdn/ui/auth/signUp/sign_up_bloc.dart';
 import 'package:projet_cdn/ui/auth/welcome/welcome_screen.dart';
 import 'package:projet_cdn/ui/home/app_body.dart';
 
@@ -84,7 +89,11 @@ class _HomeState extends State<HomeScreen> {
         ),
         body: Column(
           children: [
-            Expanded(child: AppBody(messages: messages, sendMessage: sendMessage,)),
+            Expanded(
+                child: AppBody(
+              messages: messages,
+              sendMessage: sendMessage,
+            )),
             Container(
               padding: const EdgeInsets.symmetric(
                 horizontal: 10,
@@ -137,11 +146,32 @@ class _HomeState extends State<HomeScreen> {
     });
   }
 
-  void addMessage(Message message, [bool isUserMessage = false]) {
-    messages.add({
-      'message': message,
-      'isUserMessage': isUserMessage,
-    });
+  void addMessage(Message message, [bool isUserMessage = false]) async {
+    if (message.text.toString() == 'DialogText([**UPLOAD USER IMAGE**])') {
+      sendMessage(await uploadImage());
+    } else {
+      messages.add({
+        'message': message,
+        'isUserMessage': isUserMessage,
+      });
+    }
+  }
+
+  Future<String> uploadImage() async {
+    Reference storage = FirebaseStorage.instance.ref();
+    ImagePicker imagePicker = ImagePicker();
+    XFile? xImage = await imagePicker.pickImage(source: ImageSource.gallery);
+    if (xImage != null) {
+      File image = File(xImage.path);
+      Reference upload = storage.child("images/cars/${user.userID}.jpeg");
+      UploadTask uploadTask = upload.putFile(image);
+      var downloadUrl =
+          await (await uploadTask.whenComplete(() {})).ref.getDownloadURL();
+      return downloadUrl.toString();
+    }
+    String defaultUrl =
+        'https://firebasestorage.googleapis.com/v0/b/projetintegrateurv2.appspot.com/o/images%2Fpexels-mike-b-112460.jpg?alt=media&token=55503f6c-f77b-4591-9ca2-33c4cd58be8a';
+    return defaultUrl;
   }
 
   @override
@@ -150,4 +180,3 @@ class _HomeState extends State<HomeScreen> {
     super.dispose();
   }
 }
-

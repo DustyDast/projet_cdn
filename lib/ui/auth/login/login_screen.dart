@@ -178,7 +178,7 @@ class _LoginScreen extends State<LoginScreen> {
                               .add(ValidateLoginFieldsEvent(_key)),
                         ),
                       ),
-                      Padding(
+                      /*  Padding(
                         padding: const EdgeInsets.all(32.0),
                         child: Center(
                           child: Text(
@@ -259,6 +259,8 @@ class _LoginScreen extends State<LoginScreen> {
                           }
                         },
                       ),
+
+                    */
                     ],
                   ),
                 );

@@ -57,7 +57,7 @@ class WelcomeScreen extends StatelessWidget {
                   const Padding(
                     padding: EdgeInsets.symmetric(horizontal: 40, vertical: 16),
                     child: Text(
-                      'Tout ce dont vous avez besoin sur les voitures.\nVous pouvez acheter, vendre ou vous informer avec votre nouvelle application:\nAuto Bot !.',
+                      'Tout ce dont vous avez besoin sur les voitures.\nVous pouvez\nacheter, vendre ou vous informer\navec votre nouvelle application\nAuto Bot !',
                       style: TextStyle(fontSize: 18),
                       textAlign: TextAlign.center,
                     ),
