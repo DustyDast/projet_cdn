@@ -8,7 +8,8 @@
 - [firebase](https://firebase.google.com/docs/flutter/setup) authentification, firestore and storage for flutter
 
 ##### [firebase_options.dart](https://firebase.google.com/docs/flutter/setup) & [dialog_flow_auth.json](https://cloud.google.com/iam/docs/creating-managing-service-account-keys) are not included
-#### Screen captures (WIP)
+
+
 ##### Allows you to SignUp (adding your image to cloud storage), and LogIn with Email-and Password
 SignUp             |  LogIn
 :-------------------------:|:-------------------------:
