@@ -47,11 +47,12 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
   /// list containing image paths or IconData representing the image of each page
 
   final List<dynamic> _imageList = [
-    Icons.developer_mode, //TODO ONBOARDING icons or images
-    Icons.layers,
-    Icons.account_circle,
-    Icons.laptop_mac_rounded,
-    Icons.code
+    //TODO ONBOARDING icons or images
+    Icons.car_repair_rounded,
+    Icons.currency_exchange_rounded,
+    Icons.emoji_emotions_outlined,
+    Icons.enhanced_encryption_rounded,
+    Icons.adb_rounded,
   ];
 
   @override
