@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:projet_cdn/constants.dart';
 import 'package:projet_cdn/services/helper.dart';
 import 'package:projet_cdn/ui/auth/login/login_screen.dart';
 import 'package:projet_cdn/ui/auth/signUp/sign_up_screen.dart';
@@ -72,8 +71,7 @@ class WelcomeScreen extends StatelessWidget {
                         padding: const EdgeInsets.only(top: 12, bottom: 12),
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(25.0),
-                            side:
-                                const BorderSide(color: bot)),
+                            side: const BorderSide(color: bot)),
                       ),
                       child: const Text(
                         'Se connecter',

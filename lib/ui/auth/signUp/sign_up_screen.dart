@@ -58,7 +58,7 @@ class _SignUpState extends State<SignUpScreen> {
                     context.read<LoadingCubit>().showLoading(
                         context,
                         'Création d\'un nouveau compte, veuillez patienter...',
-                        true); //TODO endless !!
+                        true);
                     context.read<AuthenticationBloc>().add(
                         SignupWithEmailAndPasswordEvent(
                             emailAddress: email!,

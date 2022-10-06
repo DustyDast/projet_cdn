@@ -1,21 +1,17 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:projet_cdn/constants.dart';
 import 'package:projet_cdn/firebase_options.dart';
 import 'package:projet_cdn/ui/auth/authentication_bloc.dart';
 import 'package:projet_cdn/ui/auth/launcherScreen/launcher_screen.dart';
 import 'package:projet_cdn/ui/loading_cubit.dart';
 import './colors.dart';
 
-
 void main() => runApp(MultiRepositoryProvider(
-
       providers: [
         RepositoryProvider(create: (_) => AuthenticationBloc()),
         RepositoryProvider(create: (_) => LoadingCubit()),
       ],
-
       child: const MyApp(),
     ));
 
@@ -90,8 +86,7 @@ class MyAppState extends State<MyApp> with WidgetsBindingObserver {
         theme: ThemeData(
             snackBarTheme: const SnackBarThemeData(
                 contentTextStyle: TextStyle(color: Colors.white)),
-            colorScheme: ColorScheme.fromSwatch()
-                .copyWith(secondary: bot)),
+            colorScheme: ColorScheme.fromSwatch().copyWith(secondary: bot)),
         debugShowCheckedModeBanner: false,
         color: bot,
         home: const LauncherScreen());

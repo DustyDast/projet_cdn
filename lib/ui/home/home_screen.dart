@@ -3,7 +3,6 @@ import 'dart:math';
 
 import 'package:dialog_flowtter/dialog_flowtter.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
@@ -11,7 +10,6 @@ import 'package:projet_cdn/constants.dart';
 import 'package:projet_cdn/model/user.dart';
 import 'package:projet_cdn/services/helper.dart';
 import 'package:projet_cdn/ui/auth/authentication_bloc.dart';
-import 'package:projet_cdn/ui/auth/signUp/sign_up_bloc.dart';
 import 'package:projet_cdn/ui/auth/welcome/welcome_screen.dart';
 import 'package:projet_cdn/ui/home/app_body.dart';
 
@@ -36,7 +34,8 @@ class _HomeState extends State<HomeScreen> {
   void initState() {
     super.initState();
     user = widget.user;
-    DialogFlowtter.fromFile(path: "assets/dialog_flow_auth.json", sessionId: user.userID)
+    DialogFlowtter.fromFile(
+            path: "assets/dialog_flow_auth.json", sessionId: user.userID)
         .then((instance) => dialogFlowtter = instance);
   }
 
@@ -105,12 +104,12 @@ class _HomeState extends State<HomeScreen> {
                   Expanded(
                     child: TextField(
                       controller: _controller,
-                      style: TextStyle(color: Colors.white),
+                      style: const TextStyle(color: Colors.white),
                     ),
                   ),
                   IconButton(
                     color: Colors.white,
-                    icon: Icon(Icons.send),
+                    icon: const Icon(Icons.send),
                     onPressed: () {
                       sendMessage(_controller.text);
                       _controller.clear();
@@ -168,10 +167,11 @@ class _HomeState extends State<HomeScreen> {
       var downloadUrl =
           await (await uploadTask.whenComplete(() {})).ref.getDownloadURL();
       return downloadUrl.toString();
+    } else {
+      String defaultUrl =
+          'https://t3.ftcdn.net/jpg/04/38/83/84/240_F_438838431_w6i2nHhI9CxGX4gvicpP0tmJktvpqCdd.jpg';
+      return defaultUrl;
     }
-    String defaultUrl =
-        'https://firebasestorage.googleapis.com/v0/b/projetintegrateurv2.appspot.com/o/images%2Fpexels-mike-b-112460.jpg?alt=media&token=55503f6c-f77b-4591-9ca2-33c4cd58be8a';
-    return defaultUrl;
   }
 
   @override

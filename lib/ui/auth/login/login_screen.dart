@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:projet_cdn/constants.dart';
 import 'package:projet_cdn/services/helper.dart';
 import 'package:projet_cdn/ui/auth/authentication_bloc.dart';
 import 'package:projet_cdn/ui/auth/login/login_bloc.dart';
 import 'package:projet_cdn/ui/auth/resetPasswordScreen/reset_password_screen.dart';
 import 'package:projet_cdn/ui/home/home_screen.dart';
 import 'package:projet_cdn/ui/loading_cubit.dart';
-import 'package:the_apple_sign_in/the_apple_sign_in.dart' as apple;
+//import 'package:the_apple_sign_in/the_apple_sign_in.dart' as apple;
 import '../../../colors.dart';
 
 class LoginScreen extends StatefulWidget {
