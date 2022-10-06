@@ -167,10 +167,11 @@ class _HomeState extends State<HomeScreen> {
       var downloadUrl =
           await (await uploadTask.whenComplete(() {})).ref.getDownloadURL();
       return downloadUrl.toString();
+    } else {
+      String defaultUrl =
+          'https://t3.ftcdn.net/jpg/04/38/83/84/240_F_438838431_w6i2nHhI9CxGX4gvicpP0tmJktvpqCdd.jpg';
+      return defaultUrl;
     }
-    String defaultUrl =
-        'https://firebasestorage.googleapis.com/v0/b/projetintegrateurv2.appspot.com/o/images%2Fpexels-mike-b-112460.jpg?alt=media&token=55503f6c-f77b-4591-9ca2-33c4cd58be8a';
-    return defaultUrl;
   }
 
   @override
