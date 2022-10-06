@@ -54,6 +54,7 @@ dependencies:
   cloud_functions: ^3.3.7
   firebase_messaging: ^13.0.2
   dialog_flowtter: ^0.3.3
+  flutter_sms: ^2.3.3
 
 dev_dependencies:
   flutter_test:

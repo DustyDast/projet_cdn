@@ -6,12 +6,16 @@ import 'package:projet_cdn/firebase_options.dart';
 import 'package:projet_cdn/ui/auth/authentication_bloc.dart';
 import 'package:projet_cdn/ui/auth/launcherScreen/launcher_screen.dart';
 import 'package:projet_cdn/ui/loading_cubit.dart';
+import './colors.dart';
+
 
 void main() => runApp(MultiRepositoryProvider(
+
       providers: [
         RepositoryProvider(create: (_) => AuthenticationBloc()),
         RepositoryProvider(create: (_) => LoadingCubit()),
       ],
+
       child: const MyApp(),
     ));
 
@@ -87,9 +91,9 @@ class MyAppState extends State<MyApp> with WidgetsBindingObserver {
             snackBarTheme: const SnackBarThemeData(
                 contentTextStyle: TextStyle(color: Colors.white)),
             colorScheme: ColorScheme.fromSwatch()
-                .copyWith(secondary: const Color(COLOR_PRIMARY))),
+                .copyWith(secondary: bot)),
         debugShowCheckedModeBanner: false,
-        color: const Color(COLOR_PRIMARY),
+        color: bot,
         home: const LauncherScreen());
   }
 

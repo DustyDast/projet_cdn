@@ -6,6 +6,7 @@ import 'package:projet_cdn/ui/auth/authentication_bloc.dart';
 import 'package:projet_cdn/ui/auth/onBoarding/on_boarding_screen.dart';
 import 'package:projet_cdn/ui/auth/welcome/welcome_screen.dart';
 import 'package:projet_cdn/ui/home/home_screen.dart';
+import '../../../colors.dart';
 
 class LauncherScreen extends StatefulWidget {
   const LauncherScreen({Key? key}) : super(key: key);
@@ -24,7 +25,7 @@ class _LauncherScreenState extends State<LauncherScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(COLOR_PRIMARY),
+      backgroundColor: bot,
       body: BlocListener<AuthenticationBloc, AuthenticationState>(
         listener: (context, state) {
           switch (state.authState) {

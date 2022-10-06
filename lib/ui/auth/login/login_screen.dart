@@ -8,6 +8,7 @@ import 'package:projet_cdn/ui/auth/resetPasswordScreen/reset_password_screen.dar
 import 'package:projet_cdn/ui/home/home_screen.dart';
 import 'package:projet_cdn/ui/loading_cubit.dart';
 import 'package:the_apple_sign_in/the_apple_sign_in.dart' as apple;
+import '../../../colors.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -84,7 +85,7 @@ class _LoginScreen extends State<LoginScreen> {
                         child: Text(
                           'S\'identifier',
                           style: TextStyle(
-                              color: Color(COLOR_PRIMARY),
+                              color: bot,
                               fontSize: 25.0,
                               fontWeight: FontWeight.bold),
                         ),
@@ -101,7 +102,7 @@ class _LoginScreen extends State<LoginScreen> {
                             },
                             style: const TextStyle(fontSize: 18.0),
                             keyboardType: TextInputType.emailAddress,
-                            cursorColor: const Color(COLOR_PRIMARY),
+                            cursorColor: bot,
                             decoration: getInputDecoration(
                                 hint: 'Adresse e-mail',
                                 darkMode: isDarkMode(context),
@@ -122,7 +123,7 @@ class _LoginScreen extends State<LoginScreen> {
                                 .add(ValidateLoginFieldsEvent(_key)),
                             textInputAction: TextInputAction.done,
                             style: const TextStyle(fontSize: 18.0),
-                            cursorColor: const Color(COLOR_PRIMARY),
+                            cursorColor: bot,
                             decoration: getInputDecoration(
                                 hint: 'Mot de passe',
                                 darkMode: isDarkMode(context),
@@ -141,7 +142,7 @@ class _LoginScreen extends State<LoginScreen> {
                             child: const Text(
                               'mot de passe oublié?',
                               style: TextStyle(
-                                  color: Colors.lightBlue,
+                                  color: botAccent,
                                   fontWeight: FontWeight.bold,
                                   fontSize: 15,
                                   letterSpacing: 1),
@@ -156,11 +157,11 @@ class _LoginScreen extends State<LoginScreen> {
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
                             padding: const EdgeInsets.only(top: 12, bottom: 12),
-                            backgroundColor: const Color(COLOR_PRIMARY),
+                            backgroundColor: bot,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(25.0),
                               side: const BorderSide(
-                                color: Color(COLOR_PRIMARY),
+                                color: bot,
                               ),
                             ),
                           ),

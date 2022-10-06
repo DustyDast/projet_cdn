@@ -1,5 +1,8 @@
 import 'package:dialog_flowtter/dialog_flowtter.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_sms/flutter_sms.dart';
+import 'package:url_launcher/url_launcher.dart';
+
 
 
 
@@ -12,8 +15,7 @@ class AppBody extends StatelessWidget {
     this.messages = const [],
     required this.sendMessage
   }) : super(key: key);
-
-  @override
+   @override
   Widget build(BuildContext context) {
     return ListView.separated(
       itemBuilder: (context, i) {
@@ -171,6 +173,21 @@ class _CardContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    const String separateur = "=-=";
+    var  elements = [];
+    var lePrix = '';
+    var leKm = '';
+    var laDescription = '';
+    var leNumero = [' '];
+    var lEmail = '';
+    var leMessage = "Bonjour,\nJe suis intéressé par votre annonce pour\n" + card.title!;
+    elements = card.subtitle!.split(separateur);
+    lePrix = elements[0];
+    leKm = elements[1];
+    laDescription = elements[2];
+    leNumero = [elements[3]];
+    lEmail = elements[4];
+    
     return Container(
       child: Card(
         color: Colors.purple,
@@ -204,11 +221,25 @@ class _CardContainer extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 10),
                       child: Text(
-                        card.subtitle!,
+                        'Prix: '+ lePrix +' CAD',
                         style: TextStyle(color: Colors.white),
                       ),
                     ),
-                  if (card.buttons?.isNotEmpty ?? false)
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 10),
+                      child: Text(
+                        'Kilométrage: '+leKm+'km',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 10),
+                      child: Text(
+                        'Description: '+laDescription,
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ),
+                    if (card.buttons?.isNotEmpty ?? false)
                     Container(
                       constraints: BoxConstraints(
                         maxHeight: 40,
@@ -217,21 +248,21 @@ class _CardContainer extends StatelessWidget {
                         shrinkWrap: true,
                         scrollDirection: Axis.horizontal,
                         // padding: const EdgeInsets.symmetric(vertical: 5),
-                        itemBuilder: (context, i) {
-                          CardButton button = card.buttons![i];
+                        itemBuilder: (context, i) {                          
+                          CardButton button = card.buttons![i];                     
+                          
                           return TextButton(
                             style: TextButton.styleFrom(
                               primary: Colors.white,
                               backgroundColor: Colors.blue,
                             ),
-                            child: Text(button.text ?? ''),
-                            onPressed: () {
-                              ScaffoldMessenger.of(context)
-                                  .showSnackBar(SnackBar(
-                                content: Text(button.postback ?? ''),
-                              ));
+                            child: Text(button.text ?? ''),                            
+                            onPressed: () { 
+                              void contact = i== 0?launchEmail(toEmail: lEmail, subject: card.title!, message: leMessage): envoiSMS(leMessage, leNumero);
+                              contact;
                             },
                           );
+                          
                         },
                         separatorBuilder: (_, i) => Container(width: 10),
                         itemCount: card.buttons!.length,
@@ -245,4 +276,29 @@ class _CardContainer extends StatelessWidget {
       ),
     );
   }
+
+  void envoiSMS(String msg, List<String> list_receipents) async {
+  String send_result = await sendSMS(message: msg, recipients: list_receipents)
+          .catchError((err) {
+        print(err);
+      });
+  print(send_result);
+  }
+
+  Future launchEmail({
+    required String toEmail,
+    required String subject,
+    required String message,
+
+  }) async{
+      final  Uri url = Uri.parse('mailto:$toEmail?subject=${Uri.encodeFull(subject)}&body=${Uri.encodeFull(message)}');
+      if(await canLaunchUrl(url)){        
+        await launchUrl(url);
+      } else{
+        debugPrint('error');
+      }
+  }
+
 }
+
+
