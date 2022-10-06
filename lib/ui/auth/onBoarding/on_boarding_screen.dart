@@ -27,21 +27,21 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
 
   ///list of strings containing onBoarding titles
   final List<String> _titlesList = [
-    'Flutter OnBoarding', //TODO ONBOARDING text
-    'Firebase Auth',
-    'Facebook Login',
-    'Instaflutter.com',
-    'Jump straight into the action.',
+    'Auto Bot Chat App', //TODO ONBOARDING text
+    'Offres intéressantes',
+    'Meilleure expérience utilisateur',
+    'Gardez vos données en sécurité',
+    'chatbot d\'intelligence artificielle',
   ];
 
   /// list of strings containing onBoarding subtitles, the small text under the
   /// title
   final List<String> _subtitlesList = [
-    'Build your on-boarding flow in seconds.', //TODO ONBOARDING text
-    'Use Firebase for user managements.',
-    'Leverage Facebook to log in user easily.',
-    'Get more awesome templates',
-    'Get Started'
+    'Bienvenue sur le meilleur marché automobile', //TODO ONBOARDING text
+    'Un endroit où vous pourrez vendre ou acheter votre prochaine voiture',
+    'Ne perdez pas de temps à remplir des formulaires ennuyeux.',
+    'Application optimisée par firestore et dialog flow',
+    'connectez-vous et laissez-vous guider par notre bot'
   ];
 
   /// list containing image paths or IconData representing the image of each page
