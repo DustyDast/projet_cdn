@@ -100,7 +100,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                               side: const BorderSide(color: Colors.white),
                               shape: const StadiumBorder()),
                           child: const Text(
-                            'Continue',
+                            'Démarrez',
                             style: TextStyle(
                                 fontSize: 14.0,
                                 color: Colors.white,
