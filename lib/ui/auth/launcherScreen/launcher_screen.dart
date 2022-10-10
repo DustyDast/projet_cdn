@@ -43,7 +43,7 @@ class _LauncherScreenState extends State<LauncherScreen> {
         child: const Center(
           child: CircularProgressIndicator.adaptive(
             backgroundColor: Colors.white,
-            valueColor: AlwaysStoppedAnimation(Color(COLOR_PRIMARY)),
+            valueColor: AlwaysStoppedAnimation(COLOR_PRIMARY),
           ),
         ),
       ),

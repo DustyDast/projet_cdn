@@ -35,13 +35,12 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
               listener: (context, state) {
                 if (state is ResetPasswordDone) {
                   context.read<LoadingCubit>().hideLoading();
-                  showSnackBar(context,
-                      'Reset password email has been sent, Please check your email.');
+                  showSnackBar(context, 'Email envoyé');
                   Navigator.pop(context);
                 } else if (state is ValidResetPasswordField) {
                   context
                       .read<LoadingCubit>()
-                      .showLoading(context, 'Sending Email...', false);
+                      .showLoading(context, 'Envoi...', false);
                   context
                       .read<ResetPasswordCubit>()
                       .resetPassword(_emailAddress);
@@ -66,9 +65,9 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                           padding: EdgeInsets.only(
                               top: 32.0, right: 16.0, left: 16.0),
                           child: Text(
-                            'Reset Password',
+                            'Resetter le mot de passe',
                             style: TextStyle(
-                                color: Color(COLOR_PRIMARY),
+                                color: COLOR_PRIMARY,
                                 fontSize: 25.0,
                                 fontWeight: FontWeight.bold),
                           ),
@@ -86,7 +85,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                             onSaved: (val) => _emailAddress = val!,
                             style: const TextStyle(fontSize: 18.0),
                             keyboardType: TextInputType.emailAddress,
-                            cursorColor: const Color(COLOR_PRIMARY),
+                            cursorColor: COLOR_PRIMARY,
                             decoration: getInputDecoration(
                                 hint: 'E-mail',
                                 darkMode: isDarkMode(context),
@@ -98,18 +97,18 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                               right: 40.0, left: 40.0, top: 40),
                           child: ElevatedButton(
                             style: ElevatedButton.styleFrom(
-                              backgroundColor: const Color(COLOR_PRIMARY),
+                              backgroundColor: COLOR_PRIMARY,
                               padding:
                                   const EdgeInsets.only(top: 12, bottom: 12),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(25.0),
                                 side: const BorderSide(
-                                  color: Color(COLOR_PRIMARY),
+                                  color: COLOR_PRIMARY,
                                 ),
                               ),
                             ),
                             child: const Text(
-                              'Send Email',
+                              'Envoyer Email',
                               style: TextStyle(
                                 fontSize: 20,
                                 fontWeight: FontWeight.bold,

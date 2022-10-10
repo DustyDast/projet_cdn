@@ -35,7 +35,7 @@ class WelcomeScreen extends StatelessWidget {
                 children: <Widget>[
                   Center(
                     child: Image.asset(
-                      'assets/images/lambo.jpg',
+                      'assets/images/logo-color-rounded.png',
                       width: 380.0,
                       height: 220.0,
                       fit: BoxFit.cover,
@@ -56,7 +56,7 @@ class WelcomeScreen extends StatelessWidget {
                   const Padding(
                     padding: EdgeInsets.symmetric(horizontal: 40, vertical: 16),
                     child: Text(
-                      'Tout ce dont vous avez besoin sur les voitures.\nVous pouvez\nacheter, vendre ou vous informer\navec votre nouvelle application\nAuto Bot !',
+                      'Tout ce dont vous avez besoin sur les voitures.\n\nVous pouvez\nAcheter, Vendre ou vous Informer\navec votre nouvelle application\n\nAuto Bot !',
                       style: TextStyle(fontSize: 18),
                       textAlign: TextAlign.center,
                     ),

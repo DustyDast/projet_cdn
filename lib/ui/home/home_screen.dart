@@ -55,7 +55,7 @@ class _HomeState extends State<HomeScreen> {
             children: [
               const DrawerHeader(
                 decoration: BoxDecoration(
-                  color: Color(COLOR_PRIMARY),
+                  color: COLOR_PRIMARY,
                 ),
                 child: Text(
                   'Drawer Header',

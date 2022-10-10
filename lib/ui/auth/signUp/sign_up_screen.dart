@@ -98,7 +98,7 @@ class _SignUpState extends State<SignUpScreen> {
                           const Text(
                             'Créer un nouveau compte',
                             style: TextStyle(
-                                color: Color(COLOR_PRIMARY),
+                                color: COLOR_PRIMARY,
                                 fontWeight: FontWeight.bold,
                                 fontSize: 25.0),
                           ),
@@ -151,7 +151,7 @@ class _SignUpState extends State<SignUpScreen> {
                                 Positioned(
                                   right: 110,
                                   child: FloatingActionButton(
-                                    backgroundColor: const Color(COLOR_PRIMARY),
+                                    backgroundColor: COLOR_PRIMARY,
                                     mini: true,
                                     onPressed: () => _onCameraClick(context),
                                     child: Icon(
@@ -226,7 +226,7 @@ class _SignUpState extends State<SignUpScreen> {
                               },
                               style:
                                   const TextStyle(height: 0.8, fontSize: 18.0),
-                              cursorColor: const Color(COLOR_PRIMARY),
+                              cursorColor: COLOR_PRIMARY,
                               decoration: getInputDecoration(
                                   hint: 'Mot de passe',
                                   darkMode: isDarkMode(context),
@@ -251,7 +251,7 @@ class _SignUpState extends State<SignUpScreen> {
                               },
                               style:
                                   const TextStyle(height: 0.8, fontSize: 18.0),
-                              cursorColor: const Color(COLOR_PRIMARY),
+                              cursorColor: COLOR_PRIMARY,
                               decoration: getInputDecoration(
                                   hint: 'Confirmez le mot de passe',
                                   darkMode: isDarkMode(context),
@@ -263,13 +263,13 @@ class _SignUpState extends State<SignUpScreen> {
                                 right: 40.0, left: 40.0, top: 40.0),
                             child: ElevatedButton(
                               style: ElevatedButton.styleFrom(
-                                backgroundColor: const Color(COLOR_PRIMARY),
+                                backgroundColor: COLOR_PRIMARY,
                                 padding:
                                     const EdgeInsets.only(top: 12, bottom: 12),
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(25.0),
                                   side: const BorderSide(
-                                    color: Color(COLOR_PRIMARY),
+                                    color: COLOR_PRIMARY,
                                   ),
                                 ),
                               ),
@@ -303,7 +303,7 @@ class _SignUpState extends State<SignUpScreen> {
                                               eulaAccepted: value!,
                                             ),
                                           ),
-                                  activeColor: const Color(COLOR_PRIMARY),
+                                  activeColor: COLOR_PRIMARY,
                                   value: acceptEULA,
                                 );
                               },
