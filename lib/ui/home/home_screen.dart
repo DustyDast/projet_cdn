@@ -58,7 +58,7 @@ class _HomeState extends State<HomeScreen> {
                   color: COLOR_PRIMARY,
                 ),
                 child: Text(
-                  'Drawer Header',
+                  'AutoBot',
                   style: TextStyle(color: Colors.white),
                 ),
               ),

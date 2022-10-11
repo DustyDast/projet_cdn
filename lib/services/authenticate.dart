@@ -155,7 +155,7 @@ class FireStoreUtils {
               email: emailAddress, password: password);
       String profilePicUrl = '';
       if (image != null) {
-        updateProgress('Uploading image, Please wait...');
+        updateProgress('Ajout de l\'image, un moment svp');
         profilePicUrl =
             await uploadUserImageToServer(image, result.user?.uid ?? '');
       }
