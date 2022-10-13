@@ -17,7 +17,7 @@ class ResetPasswordCubit extends Cubit<ResetPasswordState> {
       key.currentState!.save();
       emit(ValidResetPasswordField());
     } else {
-      emit(ResetPasswordFailureState(errorMessage: 'Invalid email address.'));
+      emit(ResetPasswordFailureState(errorMessage: 'Addresse Email invalide'));
     }
   }
 }

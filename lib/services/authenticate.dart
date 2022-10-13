@@ -62,20 +62,20 @@ class FireStoreUtils {
       debugPrint('$exception$s');
       switch ((exception).code) {
         case 'invalid-email':
-          return 'Email address is malformed.';
+          return 'Addresse Email invalide';
         case 'wrong-password':
-          return 'Wrong password.';
+          return 'Mauvais mot de passe';
         case 'user-not-found':
-          return 'No user corresponding to the given email address.';
+          return 'Utilisateur non enregistré';
         case 'user-disabled':
-          return 'This user has been disabled.';
+          return 'Utilisateur banni';
         case 'too-many-requests':
-          return 'Too many attempts to sign in as this user.';
+          return 'Trop de rêquetes pour cet utilisateur';
       }
-      return 'Unexpected firebase error, Please try again.';
+      return 'erreur firebase réessayez plus tard';
     } catch (e, s) {
       debugPrint('$e$s');
-      return 'Login failed, Please try again.';
+      return 'Connexion échoué réessayez plus tard';
     }
   }
 
@@ -155,7 +155,7 @@ class FireStoreUtils {
               email: emailAddress, password: password);
       String profilePicUrl = '';
       if (image != null) {
-        updateProgress('Uploading image, Please wait...');
+        updateProgress('Ajout de l\'image, un moment svp');
         profilePicUrl =
             await uploadUserImageToServer(image, result.user?.uid ?? '');
       }
@@ -173,27 +173,27 @@ class FireStoreUtils {
       }
     } on auth.FirebaseAuthException catch (error) {
       debugPrint('$error${error.stackTrace}');
-      String message = 'Couldn\'t sign up';
+      String message = 'Inscription Échouée';
       switch (error.code) {
         case 'email-already-in-use':
-          message = 'Email already in use, Please pick another email!';
+          message = 'Email déjà utilisé, essayez un autre e-mail';
           break;
         case 'invalid-email':
-          message = 'Enter valid e-mail';
+          message = 'e-mail invalide';
           break;
         case 'operation-not-allowed':
-          message = 'Email/password accounts are not enabled';
+          message = 'pas implementé';
           break;
         case 'weak-password':
-          message = 'Password must be more than 5 characters';
+          message = 'Mot de passe doit contenir plus de 5 caractères';
           break;
         case 'too-many-requests':
-          message = 'Too many requests, Please try again later.';
+          message = 'Trop de requetes réessayez plus tard';
           break;
       }
       return message;
     } catch (e) {
-      return 'Couldn\'t sign up';
+      return 'Enregistrement échoué';
     }
   }
 

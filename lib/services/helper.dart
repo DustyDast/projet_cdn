@@ -7,9 +7,9 @@ String? validateName(String? value) {
   String pattern = r'(^[a-zA-Z ]*$)';
   RegExp regExp = RegExp(pattern);
   if (value?.isEmpty ?? true) {
-    return "Name is required";
+    return "Prénom est un champ requis";
   } else if (!regExp.hasMatch(value ?? '')) {
-    return "Name must be a-z and A-Z";
+    return "Le prénom doit comporter des charactères a-z et A-Z";
   }
   return null;
 }
@@ -27,7 +27,7 @@ String? validateMobile(String? value) {
 
 String? validatePassword(String? value) {
   if ((value?.length ?? 0) < 6) {
-    return 'Password must be more than 5 characters';
+    return 'Le mot de passe doit être plus de 5 charactères';
   } else {
     return null;
   }
@@ -38,7 +38,7 @@ String? validateEmail(String? value) {
       r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
   RegExp regex = RegExp(pattern);
   if (!regex.hasMatch(value ?? '')) {
-    return 'Enter Valid Email';
+    return 'Email invalide';
   } else {
     return null;
   }
@@ -46,9 +46,9 @@ String? validateEmail(String? value) {
 
 String? validateConfirmPassword(String? password, String? confirmPassword) {
   if (password != confirmPassword) {
-    return 'Password doesn\'t match';
+    return 'les mot de passe ne correspondent pas';
   } else if (confirmPassword?.isEmpty ?? true) {
-    return 'Confirm password is required';
+    return 'Champ requis';
   } else {
     return null;
   }
@@ -63,12 +63,12 @@ showProgress(BuildContext context, String message, bool isDismissible) async {
   progressDialog.style(
       message: message,
       borderRadius: 10.0,
-      backgroundColor: const Color(COLOR_PRIMARY),
+      backgroundColor: COLOR_PRIMARY,
       progressWidget: Container(
         padding: const EdgeInsets.all(8.0),
         child: const CircularProgressIndicator(
           backgroundColor: Colors.white,
-          valueColor: AlwaysStoppedAnimation(Color(COLOR_PRIMARY)),
+          valueColor: AlwaysStoppedAnimation(COLOR_PRIMARY),
         ),
       ),
       elevation: 10.0,
@@ -194,7 +194,7 @@ InputDecoration getInputDecoration(
     hintText: hint,
     focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(25.0),
-        borderSide: const BorderSide(color: Color(COLOR_PRIMARY), width: 2.0)),
+        borderSide: const BorderSide(color: COLOR_PRIMARY, width: 2.0)),
     errorBorder: OutlineInputBorder(
       borderSide: BorderSide(color: errorColor),
       borderRadius: BorderRadius.circular(25.0),
