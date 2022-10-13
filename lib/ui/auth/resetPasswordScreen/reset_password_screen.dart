@@ -4,6 +4,7 @@ import 'package:projet_cdn/constants.dart';
 import 'package:projet_cdn/services/helper.dart';
 import 'package:projet_cdn/ui/auth/resetPasswordScreen/reset_password_cubit.dart';
 import 'package:projet_cdn/ui/loading_cubit.dart';
+import '../../../colors.dart';
 
 class ResetPasswordScreen extends StatefulWidget {
   const ResetPasswordScreen({Key? key}) : super(key: key);
@@ -68,7 +69,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                           child: Text(
                             'Reset Password',
                             style: TextStyle(
-                                color: Color(COLOR_PRIMARY),
+                                color: bot,
                                 fontSize: 25.0,
                                 fontWeight: FontWeight.bold),
                           ),
@@ -86,7 +87,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                             onSaved: (val) => _emailAddress = val!,
                             style: const TextStyle(fontSize: 18.0),
                             keyboardType: TextInputType.emailAddress,
-                            cursorColor: const Color(COLOR_PRIMARY),
+                            cursorColor: bot,
                             decoration: getInputDecoration(
                                 hint: 'E-mail',
                                 darkMode: isDarkMode(context),
@@ -98,13 +99,13 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                               right: 40.0, left: 40.0, top: 40),
                           child: ElevatedButton(
                             style: ElevatedButton.styleFrom(
-                              backgroundColor: const Color(COLOR_PRIMARY),
+                              backgroundColor: bot,
                               padding:
                                   const EdgeInsets.only(top: 12, bottom: 12),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(25.0),
                                 side: const BorderSide(
-                                  color: Color(COLOR_PRIMARY),
+                                  color: bot,
                                 ),
                               ),
                             ),
