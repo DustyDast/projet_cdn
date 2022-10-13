@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_sms/flutter_sms.dart';
 import 'package:projet_cdn/ui/home/home_screen.dart';
 import 'package:url_launcher/url_launcher.dart';
+import '../../colors.dart';
 
 class AppBody extends StatelessWidget {
   final List<Map<String, dynamic>> messages;
@@ -72,7 +73,7 @@ class _MessageContainer extends StatelessWidget {
             default:
               return Container(
                 decoration: BoxDecoration(
-                  color: isUserMessage ? Colors.blue : Colors.purple,
+                  color: isUserMessage ? Colors.blue : bot,
                   borderRadius: BorderRadius.circular(20),
                 ),
                 padding: const EdgeInsets.all(10),
@@ -101,7 +102,7 @@ class _QuickRepliesContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.purple,
+      color: bot,
       child: Column(
         mainAxisSize: MainAxisSize.max,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -185,7 +186,7 @@ class _CardContainer extends StatelessWidget {
       lEmail = elements[4];
 
       return Card(
-        color: Colors.purple,
+        color: bot,
         child: Column(
           mainAxisSize: MainAxisSize.max,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -276,7 +277,7 @@ class _CardContainer extends StatelessWidget {
     } else {
       print(card);
       return Card(
-        color: Colors.purple,
+        color: bot,
         child: Column(
           mainAxisSize: MainAxisSize.max,
           crossAxisAlignment: CrossAxisAlignment.start,
