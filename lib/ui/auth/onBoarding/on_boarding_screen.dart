@@ -38,7 +38,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
   /// title
   final List<String> _subtitlesList = [
     'Bienvenue sur le meilleur marché automobile', //TODO ONBOARDING text
-    'Un endroit où vous pourrez vendre ou acheter votre prochaine voiture',
+    'Un endroit où vous pouvez vendre ou acheter votre prochaine voiture',
     'Ne perdez pas de temps à remplir des formulaires ennuyeux.',
     'Application optimisée par firestore et dialog flow',
     'connectez-vous et laissez-vous guider par notre bot'
