@@ -12,6 +12,7 @@ import 'package:projet_cdn/services/helper.dart';
 import 'package:projet_cdn/ui/auth/authentication_bloc.dart';
 import 'package:projet_cdn/ui/auth/welcome/welcome_screen.dart';
 import 'package:projet_cdn/ui/home/app_body.dart';
+import '../../colors.dart';
 
 class HomeScreen extends StatefulWidget {
   final User user;
@@ -55,12 +56,10 @@ class _HomeState extends State<HomeScreen> {
             children: [
               const DrawerHeader(
                 decoration: BoxDecoration(
-                  color: Color(COLOR_PRIMARY),
+                  color: bot,
                 ),
-                child: Text(
-                  'Drawer Header',
-                  style: TextStyle(color: Colors.white),
-                ),
+                child: 
+                Image(image: AssetImage("assets/images/logo.png")),
               ),
               ListTile(
                 title: const Text(
@@ -98,7 +97,7 @@ class _HomeState extends State<HomeScreen> {
                 horizontal: 10,
                 vertical: 5,
               ),
-              color: Colors.blue,
+              color: bot,
               child: Row(
                 children: [
                   Expanded(
